@@ -1,14 +1,17 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:movies_app/data/models/movies/movie.dart';
 import 'package:movies_app/data/repositories/movie_repository.dart';
+import 'package:movies_app/injection.dart';
 
 part 'movies_state.dart';
 
+@singleton
 class MoviesCubit extends Cubit<MoviesState> {
-  final MovieRepository movieRepository;
+  final MovieRepository movieRepository = getIt.get<MovieRepository>();
 
-  MoviesCubit({required this.movieRepository}) : super(MoviesInitial());
+  MoviesCubit() : super(MoviesInitial());
 
   Future<void> fetchMovies() async {
     emit(MoviesLoading());
