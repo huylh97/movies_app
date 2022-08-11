@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/modules/movies/cubit/movies_cubit.dart';
 
 class MoviesView extends StatefulWidget {
   const MoviesView({Key? key}) : super(key: key);
@@ -8,7 +10,14 @@ class MoviesView extends StatefulWidget {
 }
 
 class _MoviesViewState extends State<MoviesView> {
-  TextEditingController _formController = new TextEditingController();
+  late final MoviesCubit cubit;
+
+  @override
+  void initState() {
+    cubit = BlocProvider.of<MoviesCubit>(context);
+    cubit.fetchMovies();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

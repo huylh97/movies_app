@@ -14,13 +14,7 @@ class MoviesCubit extends Cubit<MoviesState> {
     emit(MoviesLoading());
     movieRepository.fetchMovies().then((movies) {
       emit(MoviesLoaded(movies: movies));
-    });
-  }
-
-  void searchMovies(String query) {
-    emit(MoviesLoading());
-    movieRepository.searchMovies(query).then((movies) {
-      emit(MoviesLoaded(movies: movies));
+      print(movies.length);
     });
   }
 }

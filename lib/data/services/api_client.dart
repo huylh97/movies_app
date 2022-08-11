@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:movies_app/utils/util_constants.dart';
+
+import 'api_constant.dart';
 
 class ApiClient {
   final dio = createDio();
-  final tokenDio = Dio(BaseOptions(baseUrl: BASE_URL));
+  final tokenDio = Dio(BaseOptions(baseUrl: ApiConstant.BASE_URL));
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-      baseUrl: BASE_URL,
+      baseUrl: ApiConstant.BASE_URL,
       receiveTimeout: 15000,
       connectTimeout: 15000,
       sendTimeout: 15000,
