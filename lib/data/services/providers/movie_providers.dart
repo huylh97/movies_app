@@ -4,35 +4,26 @@ import 'package:dio/dio.dart';
 import 'package:movies_app/data/models/movie.dart';
 import 'package:movies_app/data/models/movie_response.dart';
 import 'package:movies_app/data/services/api_client.dart';
-import 'package:movies_app/utils/util_constants.dart';
+
+import '../api_constant.dart';
 
 class MovieProviders {
   ApiClient _client = ApiClient();
 
   MovieProviders();
 
-  Future<List<Movie>> fetchMovies() async {
+  Future<List<Movie>> fetchMovies({int? page}) async {
     try {
       Response response = await _client.dio.get(
-        "discover/movie",
-        queryParameters: {"api_key": API_KEY},
+        ApiConstant.GET_NOW_PLAYING_MOVIE,
+        queryParameters: {
+          "api_key": ApiConstant.API_KEY,
+          "page": page ?? 1,
+        },
       );
       return MovieResponse.fromJson(response.data).results!;
     } on DioError catch (e) {
-      log("RVL_ERROR : ${e.message}");
-      return [];
-    }
-  }
-
-  Future<List<Movie>> searchMovies(String query) async {
-    try {
-      Response response = await _client.dio.get(
-        "search/movie",
-        queryParameters: {"api_key": API_KEY, "query": query},
-      );
-      return MovieResponse.fromJson(response.data).results!;
-    } on DioError catch (e) {
-      log("RVL_ERROR : ${e.message}");
+      log("fetchMovies : ${e.message}");
       return [];
     }
   }

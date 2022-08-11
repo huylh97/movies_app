@@ -46,6 +46,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'The Movie App',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.lightBlue[800],
+        fontFamily: 'Georgia',
+        textTheme: const TextTheme(
+          headline6: TextStyle(fontSize: 25.0, fontStyle: FontStyle.italic),
+          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+        ),
+      ),
       home: const MoviesPage(),
     );
   }
