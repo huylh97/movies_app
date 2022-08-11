@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:movies_app/modules/movies/cubit/movies_cubit.dart';
+import 'package:movies_app/modules/pages.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'widgets/movie_list_item.dart';
@@ -64,10 +65,15 @@ class _MoviesViewState extends State<MoviesView> {
                     mainAxisSpacing: 2,
                     crossAxisSpacing: 2,
                     children: state.movies!
-                        .map((movie) => MovieListItem(
-                              movie: movie,
-                              onTapFunction: () {},
-                            ))
+                        .map(
+                          (movie) => MovieListItem(
+                            movie: movie,
+                            onTapFunction: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => MovieDetailsPage(movie: movie)),
+                            ),
+                          ),
+                        )
                         .toList(),
                   ),
                 );
