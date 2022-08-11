@@ -12,8 +12,11 @@ App has 2 page
 - Now Playing Movies page
 - Movie Detail page
 
-Screenshots
-![Alt text](./screenshots/movies_page.png?raw=true)
-![Alt text](./screenshots/movie_details_page.png?raw=true)
+Screenshots:
+
+Movies Page            |  Movie Detail Page
+:-------------------------:|:-------------------------:
+![Alt text](./screenshots/movies_page.png?raw=true) |  ![Alt text](./screenshots/movie_details_page.png?raw=true)
+
 
 
