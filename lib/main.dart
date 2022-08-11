@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/modules/movies/view/movies_page.dart';
+
+import 'injection.dart';
+import 'presentation/pages.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -30,7 +32,9 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-void main() {
+void main() async {
+  configureDependencies();
+
   BlocOverrides.runZoned(
     () {
       runApp(const MyApp());
@@ -53,7 +57,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Georgia',
         textTheme: const TextTheme(
           headline6: TextStyle(fontSize: 25.0, fontStyle: FontStyle.italic),
-          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          bodyText2: TextStyle(fontSize: 15.0, fontFamily: 'Hind'),
         ),
       ),
       home: const MoviesPage(),
