@@ -10,11 +10,18 @@ class MoviesCubit extends Cubit<MoviesState> {
 
   MoviesCubit({required this.movieRepository}) : super(MoviesInitial());
 
-  void fetchMovies() {
+  Future<void> fetchMovies() async {
     emit(MoviesLoading());
-    movieRepository.fetchMovies().then((movies) {
-      emit(MoviesLoaded(movies: movies));
-      print(movies.length);
-    });
+    final movies = await movieRepository.fetchMovies(page: 1);
+    emit(MoviesLoaded(movies: movies, page: 1));
+  }
+
+  Future<void> loadMore() async {
+    print((state as MoviesLoaded).page!);
+    final movies = await movieRepository.fetchMovies(page: (state as MoviesLoaded).page! + 1);
+    if (movies.isNotEmpty) {
+      emit(MoviesLoaded(movies: (state as MoviesLoaded).movies! + movies, page: (state as MoviesLoaded).page! + 1));
+    }
+    print((state as MoviesLoaded).page!);
   }
 }

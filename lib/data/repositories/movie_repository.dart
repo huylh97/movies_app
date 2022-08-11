@@ -6,7 +6,7 @@ class MovieRepository {
 
   MovieRepository(this.providers);
 
-  Future<List<Movie>> fetchMovies() async {
-    return await providers.fetchMovies();
+  Future<List<Movie>> fetchMovies({int? page}) async {
+    return await providers.fetchMovies(page: page);
   }
 }

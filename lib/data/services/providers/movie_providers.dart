@@ -12,12 +12,13 @@ class MovieProviders {
 
   MovieProviders();
 
-  Future<List<Movie>> fetchMovies() async {
+  Future<List<Movie>> fetchMovies({int? page}) async {
     try {
       Response response = await _client.dio.get(
         ApiConstant.GET_NOW_PLAYING_MOVIE,
         queryParameters: {
           "api_key": ApiConstant.API_KEY,
+          "page": page ?? 1,
         },
       );
       return MovieResponse.fromJson(response.data).results!;
