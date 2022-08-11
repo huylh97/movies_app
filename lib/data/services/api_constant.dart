@@ -5,4 +5,5 @@ class ApiConstant {
   static final API_KEY = "efc028cace6f3aadb5f624ddd5ba994b";
 
   static final GET_NOW_PLAYING_MOVIE = '/movie/now_playing';
+  static final GET_MOVIE_DETAILS = '/movie';
 }

@@ -1,8 +1,9 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:movies_app/data/models/movie.dart';
-import 'package:movies_app/data/models/movie_response.dart';
+import 'package:movies_app/data/models/movies/movie.dart';
+import 'package:movies_app/data/models/movies/movie_details.dart';
+import 'package:movies_app/data/models/movies/movie_response.dart';
 import 'package:movies_app/data/services/api_client.dart';
 
 import '../api_constant.dart';
@@ -25,6 +26,22 @@ class MovieProviders {
     } on DioError catch (e) {
       log("fetchMovies : ${e.message}");
       return [];
+    }
+  }
+
+  Future<MovieDetails?> fetchMovieDetails(int movieId) async {
+    try {
+      Response response = await _client.dio.get(
+        ApiConstant.GET_MOVIE_DETAILS + '/' + movieId.toString(),
+        queryParameters: {
+          "api_key": ApiConstant.API_KEY,
+        },
+      );
+      print(response.data);
+      return MovieDetails.fromJson(response.data);
+    } on DioError catch (e) {
+      log("fetchMovies : ${e.message}");
+      return null;
     }
   }
 }
