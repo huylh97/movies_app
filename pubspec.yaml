@@ -22,12 +22,18 @@ dependencies:
   # DI
   get_it: ^7.2.0
   injectable: ^1.5.3
+  # Util
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
   injectable_generator: ^1.5.4
   build_runner: ^2.2.0
+  bloc_test: ^9.0.3
+  # mockito: ^5.3.0
 
 flutter:
 
