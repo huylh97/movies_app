@@ -3,12 +3,12 @@
 ### Project has:
 - Material design
 - Dependency injection
-- Unit test
+- Unit test / Itergration test
 - BLoC patter and MVP pattern
 - Pull to refresh and load more
 
 ### UI of app
-App has 2 page
+App has 2 pages
 - Now Playing Movies page
 - Movie Detail page
 
