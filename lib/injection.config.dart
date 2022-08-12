@@ -18,7 +18,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   gh.singleton<_i3.MovieRepository>(_i3.MovieRepository());
-  gh.singleton<_i4.MoviesCubit>(_i4.MoviesCubit());
+  gh.singleton<_i4.MoviesCubit>(
+      _i4.MoviesCubit(movieRepository: get<_i3.MovieRepository>()));
   gh.lazySingleton<_i5.MovieDetailsCubit>(
       () => _i5.MovieDetailsCubit(movieRepository: get<_i3.MovieRepository>()));
   return get;

@@ -1,4 +1,6 @@
-class Movie {
+import 'package:equatable/equatable.dart';
+
+class Movie extends Equatable {
   int? id;
   String? posterPath;
   String? releaseDate;
@@ -10,6 +12,9 @@ class Movie {
     this.releaseDate,
     this.title,
   });
+
+  @override
+  List<dynamic> get props => [];
 
   Movie.fromJson(Map<String, dynamic> json) {
     id = json['id'];
