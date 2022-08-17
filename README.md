@@ -4,7 +4,7 @@
 - Material design
 - Dependency injection
 - Unit test / Itergration test
-- BLoC patter and MVP pattern
+- BLoC patter
 - Pull to refresh and load more
 
 ### UI of app
